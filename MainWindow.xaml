@@ -1,0 +1,41 @@
+﻿<Window x:Class="TreeTest.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:TreeTest"
+        Title="MainWindow"
+        Width="525"
+        Height="350">
+    <Window.Resources>
+        <HierarchicalDataTemplate DataType="{x:Type local:Category}" ItemsSource="{Binding Path=Products}">
+            <TextBlock Text="{Binding Path=CategoryName}" />
+        </HierarchicalDataTemplate>
+
+        <HierarchicalDataTemplate DataType="{x:Type local:Product}" ItemsSource="{Binding Path=Parts}">
+            <StackPanel Orientation="Horizontal">
+                <Rectangle Width="10"
+                           Height="10"
+                           Fill="Green" />
+                <TextBlock Foreground="Green" Text="{Binding Path=Name}" />
+            </StackPanel>
+        </HierarchicalDataTemplate>
+
+        <HierarchicalDataTemplate DataType="{x:Type local:Part}">
+            <TextBlock Foreground="Red" Text="{Binding Path=Name}" />
+        </HierarchicalDataTemplate>
+    </Window.Resources>
+    <Grid>
+        <TreeView Name="tv"
+                  Width="120"
+                  Margin="6"
+                  HorizontalAlignment="Left"
+                  VerticalAlignment="Top" />
+        <Button Name="cndAdd"
+                Width="75"
+                Height="23"
+                Margin="386,75,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Click="cndAdd_Click"
+                Content="Add" />
+    </Grid>
+</Window>
